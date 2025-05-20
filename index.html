@@ -5,23 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Music Playlist</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <h1>🎵 My Music Playlist</h1>
-    <audio id="audioPlayer" controls></audio>
+    <div class="player-header">
+      <h1><i class="fas fa-music"></i> My Music Player</h1>
+      <div class="visualizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    
+    <div class="audio-container">
+      <audio id="audioPlayer" controls></audio>
+    </div>
     
     <div class="controls">
-      <button id="prevBtn">⏮️ Previous</button>
-      <button id="playPauseBtn">▶️ Play</button>
-      <button id="nextBtn">⏭️ Next</button>
+      <button id="prevBtn" class="control-btn"><i class="fas fa-step-backward"></i></button>
+      <button id="playPauseBtn" class="control-btn main-btn"><i class="fas fa-play"></i></button>
+      <button id="nextBtn" class="control-btn"><i class="fas fa-step-forward"></i></button>
+    </div>
+    
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
     
     <div class="playlist-container">
-      <h2>Playlist</h2>
-      <div class="add-song">
-        <input type="file" id="fileInput" accept="audio/*" multiple>
-        <button id="addSongBtn">➕ Add Songs</button>
+      <div class="playlist-header">
+        <h2><i class="fas fa-list"></i> Playlist</h2>
+        <div class="add-song">
+          <label for="fileInput" class="file-upload-btn">
+            <i class="fas fa-plus"></i> Add Songs
+          </label>
+          <input type="file" id="fileInput" accept="audio/*" multiple>
+        </div>
       </div>
       <ul id="playlist"></ul>
     </div>
