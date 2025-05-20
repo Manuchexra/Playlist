@@ -5,7 +5,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
 }
 
 .container {
@@ -14,10 +16,13 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
+  width: 100%;
+  max-width: 600px;
 }
 
 .controls {
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 button {
@@ -29,8 +34,67 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
+  transition: background-color 0.2s;
 }
 
 button:hover {
   background-color: #666;
+}
+
+.playlist-container {
+  margin-top: 30px;
+  text-align: left;
+}
+
+#playlist {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+#playlist li {
+  padding: 10px;
+  background-color: #3a3a3a;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#playlist li.playing {
+  background-color: #4a6da7;
+}
+
+.delete-btn {
+  background-color: #ff4444;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background-color: #ff6666;
+}
+
+.add-song {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#newSongInput {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3a3a3a;
+  color: white;
+}
+
+#fileInput {
+  display: none;
+}
+
+.add-song button {
+  width: 100%;
 }
