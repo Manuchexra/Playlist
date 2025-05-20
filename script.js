@@ -67,39 +67,42 @@ document.addEventListener("DOMContentLoaded", function () {
     savePlaylist();
   }
 
-  function updatePlaylistDisplay() {
-    playlistElement.innerHTML = '';
-    
-    audioFiles.forEach((file, index) => {
-      const li = document.createElement('li');
-      if (index === currentTrack) {
-        li.classList.add('playing');
-      }
-      
-      const fileName = typeof file === 'string' ? file.split('/').pop() : file.name;
-      li.innerHTML = `
-        <span>${index + 1}. ${fileName}</span>
-        <button class="delete-btn" data-index="${index}">
-          <i class="fas fa-trash"></i>
-        </button>
-      `;
-      
-      li.addEventListener('click', () => {
-        loadTrack(index);
-      });
-      
-      playlistElement.appendChild(li);
-    });
-    
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const index = parseInt(this.getAttribute('data-index'));
-        deleteSong(index);
-      });
-    });
-  }
+  // Previous JavaScript remains the same, just update the updatePlaylistDisplay function:
 
+function updatePlaylistDisplay() {
+  playlistElement.innerHTML = '';
+  
+  audioFiles.forEach((file, index) => {
+    const li = document.createElement('li');
+    if (index === currentTrack) {
+      li.classList.add('playing');
+    }
+    
+    const fileName = typeof file === 'string' ? file.split('/').pop() : file.name;
+    li.innerHTML = `
+      <div class="song-info">
+        <span>${index + 1}. ${fileName}</span>
+      </div>
+      <button class="delete-btn" data-index="${index}">
+        <i class="fas fa-trash"></i>
+      </button>
+    `;
+    
+    li.addEventListener('click', () => {
+      loadTrack(index);
+    });
+    
+    playlistElement.appendChild(li);
+  });
+  
+  document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const index = parseInt(this.getAttribute('data-index'));
+      deleteSong(index);
+    });
+  });
+}
   function deleteSong(index) {
     // Revoke object URL if it's a local file
     if (typeof audioFiles[index] !== 'string' && audioFiles[index].url) {
